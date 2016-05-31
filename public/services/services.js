@@ -40,6 +40,19 @@ angular.module('quizzimodo.services', [])
   }
 })
 
+.factory('User', function($http, $location) {
+  var updateUser = function(user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/update',
+      data: user
+    })
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
+})
+
 .factory('Quiz', function($http, $location) {
   var persistedData = {};
 

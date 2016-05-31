@@ -1,6 +1,6 @@
 angular.module('quizzimodo.user', [])
 
-.controller('UserController', function($scope, $rootScope) {
+.controller('UserController', function($scope, $rootScope, User) {
   $scope.profileUser = $rootScope.user.username;
   $scope.profileEmail = $rootScope.user.email;
   $scope.profileBio = $rootScope.user.bio;
