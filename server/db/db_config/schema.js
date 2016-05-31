@@ -4,7 +4,7 @@ module.exports = {
     username: {type: 'string', nullable: false, maxlength: 20},
     password: {type: 'string', nullable: false, maxlength: 20},
     name: {type: 'string', nullable: false, maxlength: 50},
-    profilePic: {type: 'string', nullable: false, default: 'http://oregoncapitalprsa.org/wp-content/uploads/2011/04/default-profile4.jpg'},
+    profilePic: {type: 'string', nullable: false, defaultTo: 'http://oregoncapitalprsa.org/wp-content/uploads/2011/04/default-profile4.jpg', maxlength:500 },
     email: {type: 'string', nullable: false, maxlength: 50},
     bio: {type: 'text', nullable: true},
     active: {type: 'boolean', nullable: false, defaultTo: true}

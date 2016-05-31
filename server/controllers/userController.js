@@ -61,7 +61,7 @@ module.exports = {
     User.forge({id: req.params.user_id})
     .fetch()
     .then((user) => {
-      console.log('fetched user in updateUser is : ',user)
+      // console.log('fetched user in updateUser is : ',user)
       user.save({name: req.body.name, email: req.body.email, bio: req.body.bio},{method:"update"})
       .then((user) => res.json({error: false, data: {message: 'User updated successfully'}}))
       .catch((err) => next(err))
@@ -69,7 +69,7 @@ module.exports = {
     .catch((err) => next(err))
   } 
   ,
-  signin: (req, res, next) => 
+  signin: (req, res, next) => {
     User.forge({username: req.body.username})
     .fetch({require: true, withRelated: ['quizzes', 'attempts.quiz']})
     .then((user) => {
@@ -95,6 +95,7 @@ module.exports = {
         .catch((err) => next(err));
     })
     .catch((err) => next(err))  
+  }
 };
 
 Date.prototype.addHours = function(h) {
