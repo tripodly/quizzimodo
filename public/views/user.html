@@ -28,13 +28,29 @@
     <section id="settings" class="hidden">
       <div class="settingTitle">
         <span class="settingTitleLeft"><p>Your user settings:</p></span>
-        <span class="settingTitleRight"><md-button class="md-icon-button md-accent"><md-icon>mode_edit</md-icon></md-button></span>
+        <span class="settingTitleRight"><md-button type="button" href="#editInfo" class="md-icon-button md-accent"><md-icon>mode_edit</md-icon></md-button></span>
       </div>
       <br>
-      <p class="setting"><span>E-mail Address</span> {{profileEmail}} </p>
-      <p class="setting"><span>Bio</span> {{profileBio}}</p>
-      <p class="setting"><span>Profile Status</span> Public</p>
+      <section id="currentInfo">
+        <p class="setting"><span>E-mail Address</span> {{profileEmail}} </p>
+        <p class="setting"><span>Bio</span> {{profileBio}}</p>
+        <p class="setting"><span>Profile Status</span> Public</p>
+      </section>
 
+      <section id="editInfo" class="hidden">
+        <md-input-container>
+          <label>Email:</label>
+          <input type="text" ng-model="email">
+        </md-input-container>
+        <md-input-container>
+          <label>Bio:</label>
+          <input type="text" ng-model="bio">
+        </md-input-container>
+        <md-input-container>
+          <label>Status:</label>
+          <input type="text" ng-model="status">
+        </md-input-container>
+      </section>
 
     </section>
   </div>
