@@ -6,7 +6,11 @@ angular.module('quizzimodo.user', [])
   $scope.profileBio = $rootScope.user.bio;
   $scope.profileQuizzesMade = $rootScope.user.quizzes;
   $scope.profileQuizzesTaken = $rootScope.user.attempts;
+  // Following scope properties to be used for editing user info
   $scope.edit = false;
+  $scope.email = $rootScope.user.email;
+  $scope.status = "public";
+  $scope.bio = $rootScope.user.bio;
 
   $(function(){
     $('#profiletabs ul li a').on('click', function(e){

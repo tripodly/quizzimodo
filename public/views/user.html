@@ -38,18 +38,28 @@
       </section>
 
       <section id="editInfo" class="hidden">
-        <md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
           <label>Email:</label>
           <input type="text" ng-model="email">
         </md-input-container>
-        <md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Status</label>
+          <md-select ng-model="status">
+            <md-option value="public">
+              Public
+            </md-option>
+            <md-option value="private">
+              Private
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container class="md-block">
           <label>Bio:</label>
-          <input type="text" ng-model="bio">
+          <textarea ng-model="bio" md-maxlength="150" rows="5" md-select-on-focus></textarea>
         </md-input-container>
-        <md-input-container>
-          <label>Status:</label>
-          <input type="text" ng-model="status">
-        </md-input-container>
+        <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <md-button class="md-raised md-primary" type="button">Update Info</md-button>
+        </div>
       </section>
 
     </section>
