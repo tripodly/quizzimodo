@@ -57,15 +57,17 @@ module.exports = {
     .then((users) => res.json({error: false, data: users}))
     .catch((err) => next(err))
   ,
-  updateUser: (req, res, next) =>
-    User.forge({user_id: req.params.id})
+  updateUser: (req, res, next) => {
+    User.forge({id: req.params.user_id})
     .fetch()
-    .then((user) =>
-      user.save(req.body)
+    .then((user) => {
+      console.log('fetched user in updateUser is : ',user)
+      user.save({name: req.body.name, email: req.body.email, bio: req.body.bio},{method:"update"})
       .then((user) => res.json({error: false, data: {message: 'User updated successfully'}}))
       .catch((err) => next(err))
-    )
+    })
     .catch((err) => next(err))
+  } 
   ,
   signin: (req, res, next) => 
     User.forge({username: req.body.username})

@@ -42,15 +42,23 @@ angular.module('quizzimodo.services', [])
 
 .factory('User', function($http, $location) {
   var updateUser = function(user) {
+    console.log('User.updateUser called with user object of : ',user);
+    var url = '/api/users/' + user.id;
+    console.log('url inside User.updateUser is : ',url);
     return $http({
-      method: 'POST',
-      url: '/api/users/update',
+      method: 'PUT',
+      url: url,
       data: user
     })
     .then(function(resp) {
+      console.log('resp data from updateUser factory is : ',resp.data);
       return resp.data;
     });
   };
+
+  return {
+    updateUser: updateUser
+  }
 })
 
 .factory('Quiz', function($http, $location) {
