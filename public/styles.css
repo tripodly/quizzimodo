@@ -368,6 +368,18 @@ a {
 #user .setting span img {
   cursor: pointer;
 }
+#user .settingTitle {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#user span.settingTitleLeft {
+  display: inline-block;
+  float: left;
+}
+#user span.settingTitleRight {
+  display: inline-block;
+  float: right;
+}
 #container {
    min-height:100%;
    position:relative;

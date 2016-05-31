@@ -26,7 +26,11 @@
     </section>
 
     <section id="settings" class="hidden">
-      <p>Your user settings:</p>
+      <div class="settingTitle">
+        <span class="settingTitleLeft"><p>Your user settings:</p></span>
+        <span class="settingTitleRight"><md-button class="md-icon-button md-accent"><md-icon>mode_edit</md-icon></md-button></span>
+      </div>
+      <br>
       <p class="setting"><span>E-mail Address</span> {{profileEmail}} </p>
       <p class="setting"><span>Bio</span> {{profileBio}}</p>
       <p class="setting"><span>Profile Status</span> Public</p>
