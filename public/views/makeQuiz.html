@@ -26,6 +26,36 @@
         <form id="title-form">
            Quiz Title: <input type="text" ng-model="quizName" /><br />
            Quiz Details: <input type="text" ng-model="quizDetails" /><br />
+           Passing Score: <md-input-container class="md-block" flex-gt-sm>
+             
+             <md-select ng-model="quizPassing">
+               <md-option value="60">
+                 60%
+               </md-option>
+               <md-option value="65">
+                 65%
+               </md-option>
+               <md-option value="70">
+                 70%
+               </md-option>
+               <md-option value="75">
+                 75%
+               </md-option>
+               <md-option value="80">
+                 80%
+               </md-option>
+               <md-option value="85">
+                 85%
+               </md-option>
+               <md-option value="90">
+                 90%
+               </md-option>
+               <md-option value="95">
+                 95%
+               </md-option>
+             </md-select>
+           </md-input-container>
+           <br />
         </form>
       </div>
     </md-content>

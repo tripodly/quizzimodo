@@ -23,6 +23,7 @@ module.exports = {
     subtopic_id: {type: 'integer', nullable: false, references: 'subtopic.id'},
     quiz: {type: 'string', nullable: false},
     details: {type: 'text', nullable: true},
+    passing: {type: 'float', nullable: false, defaultTo: 75.00},
     public: {type: 'boolean', nullable: false, defaultTo: false},
     start: {type: 'dateTime', nullable: true},
     end: {type: 'dateTime', nullable: true},
@@ -32,6 +33,7 @@ module.exports = {
   question: {
     id: {type: 'increments', nullable: false, primary: true},
     quiz_id: {type: 'integer', nullable: false, references: 'quiz.id'},
+    image: {type: 'string', nullable: true},
     question: {type: 'text', nullable: false}
   },
   answer_option: {
