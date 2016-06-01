@@ -75,6 +75,11 @@ angular.module('quizzimodo.quiz', [])
     clearFields();
     $scope.currentlyEditing = false;
   }
+  $scope.updateModal = function(){
+    console.log('clicked in the update modal')
+    $scope.showModal = !$scope.quiz.public;
+    $scope.quiz.public = !$scope.quiz.public;
+  }
 
   $scope.submitQuiz = function() {
       $scope.quiz.created_by = State.user.id;
