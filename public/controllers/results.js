@@ -1,6 +1,6 @@
 angular.module('quizzimodo.results', [])
 
-.controller('ResultsController', function($scope, $location, Quiz, $rootScope) {
+.controller('ResultsController', function($scope, $location, Quiz) {
   
   $scope.quizID = Quiz.getData();
 

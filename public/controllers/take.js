@@ -1,6 +1,6 @@
 angular.module('quizzimodo.take', [])
 
-.controller('TakeController', function($scope, $location, Quiz, $rootScope) {
+.controller('TakeController', function($scope, $location, Quiz, State) {
 
   $scope.quizID = Quiz.getData();
   $scope.answers = {};
@@ -19,7 +19,7 @@ angular.module('quizzimodo.take', [])
 
 
   $scope.submit = function(){
-    $scope.quiz.userID = $rootScope.user.id;
+    $scope.quiz.userID = State.user.id;
     console.log("This is the completed quiz", $scope.quiz);
     Quiz.postResults($scope.quiz).then(function(data){
       Quiz.setData($scope.quizID);

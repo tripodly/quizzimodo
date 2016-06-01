@@ -12,6 +12,7 @@ module.exports = {
       subtopic_id: newQuiz.subtopic_id,
       quiz: newQuiz.quiz,
       details: newQuiz.details,
+      passing: newQuiz.passing,
       public: newQuiz.public,
       start: newQuiz.start,
       end: newQuiz.end,
