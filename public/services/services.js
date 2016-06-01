@@ -8,6 +8,7 @@ angular.module('quizzimodo.services', [])
       data: user
     })
     .then(function(resp) {
+      console.log('inside Auth service, resp.data is : ',resp.data);
       State.topics = resp.data.data.topics;
       State.user = resp.data.data.user;
       return resp.data;
