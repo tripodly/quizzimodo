@@ -63,7 +63,7 @@ module.exports = {
     .then((user) => {
       // console.log('fetched user in updateUser is : ',user)
       user.save({name: req.body.name, email: req.body.email, bio: req.body.bio},{method:"update"})
-      .then((user) => res.json({error: false, data: {message: 'User updated successfully'}}))
+      .then((user) => res.json({error: false, message: 'User updated successfully', user: user }))
       .catch((err) => next(err))
     })
     .catch((err) => next(err))

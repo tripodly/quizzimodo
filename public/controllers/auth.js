@@ -1,6 +1,6 @@
 angular.module('quizzimodo.auth', [])
 
-.controller('AuthController', function($scope, $window, $location, Auth, $mdDialog, $rootScope) {
+.controller('AuthController', function($scope, $window, $location, Auth, $mdDialog, State) {
 
   $scope.user = {};
 
@@ -34,8 +34,8 @@ angular.module('quizzimodo.auth', [])
     Auth.signin($scope.user)
     .then(function (resp) {
       $window.localStorage.setItem('com.quizzimodo', resp.token);
-      $rootScope.topics = resp.data.topics;
-      $rootScope.user = resp.data.user;
+      // $rootScope.topics = resp.data.topics;
+      // $rootScope.user = resp.data.user;
       $location.path('/main');
     })
     .catch(function(error) {
@@ -48,8 +48,8 @@ angular.module('quizzimodo.auth', [])
     Auth.signup($scope.user)
     .then(function(resp) {
       $window.localStorage.setItem('com.quizzimodo', resp.token);
-      $rootScope.topics = resp.data.topics;
-      $rootScope.user = resp.data.user;
+      // $rootScope.topics = resp.data.topics;
+      // $rootScope.user = resp.data.user;
       $location.path('/main');
     })
     .catch(function(error) {

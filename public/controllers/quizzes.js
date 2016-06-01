@@ -1,6 +1,6 @@
 angular.module('quizzimodo.quizzes', [])
 
-.controller('QuizzesController', function($scope, $location, Quiz, $rootScope) {
+.controller('QuizzesController', function($scope, $location, Quiz, State) {
 
   $scope.$watch('topicPick', function(x){
     $scope.userTopic = $scope.topics[x]['topic'];
@@ -23,7 +23,7 @@ angular.module('quizzimodo.quizzes', [])
       $scope.quizzes = data.data;
       $scope.temp = data.data;
       $scope.image = '../assets/avatar.png';
-      $scope.topics = $rootScope.topics;
+      $scope.topics = State.topics;
       if(data.data.result){
         $scope.taken = 'Retake';
       } else {

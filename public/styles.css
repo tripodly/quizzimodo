@@ -312,6 +312,8 @@ a {
 #user #userphoto img {
   display: block;
   padding: 2px;
+  height: 140px;
+  width: 140px;
   background: #fff;
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4);
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.4);

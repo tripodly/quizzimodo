@@ -1,6 +1,6 @@
 angular.module('quizzimodo.services', [])
 
-.factory('Auth', function($http, $location, $window) {
+.factory('Auth', function($http, $location, $window, State) {
   var signin = function(user) {
     return $http({
       method: 'POST',
@@ -8,6 +8,8 @@ angular.module('quizzimodo.services', [])
       data: user
     })
     .then(function(resp) {
+      State.topics = resp.data.data.topics;
+      State.user = resp.data.data.user;
       return resp.data;
     });
   };
@@ -19,12 +21,16 @@ angular.module('quizzimodo.services', [])
       data: user
     })
     .then(function(resp) {
+      State.topics = resp.data.data.topics;
+      State.user = resp.data.data.user;
       return resp.data;
     });
   };
 
-  var signout = function() {
+  var signout = function(State) {
     $window.localStorage.removeItem('com.quizzimodo');
+    // clear State
+    State = {};
     $location.path('/');
   };
 
@@ -40,7 +46,7 @@ angular.module('quizzimodo.services', [])
   }
 })
 
-.factory('User', function($http, $location) {
+.factory('User', function($http, $location, State) {
   var updateUser = function(user) {
     console.log('User.updateUser called with user object of : ',user);
     var url = '/api/users/' + user.id;
@@ -51,7 +57,11 @@ angular.module('quizzimodo.services', [])
       data: user
     })
     .then(function(resp) {
-      console.log('resp data from updateUser factory is : ',resp.data);
+      console.log('resp.data from updateUser factory is : ',resp.data);
+      State.user.name = resp.data.user.name;
+      State.user.bio = resp.data.user.bio;
+      State.user.email = resp.data.user.email;
+      State.user.profilePic = resp.data.user.profilePic;
       return resp.data;
     });
   };
@@ -59,6 +69,12 @@ angular.module('quizzimodo.services', [])
   return {
     updateUser: updateUser
   }
+})
+
+.factory('State', function() {
+  var state = {};
+
+  return state;
 })
 
 .factory('Quiz', function($http, $location) {

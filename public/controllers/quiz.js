@@ -1,8 +1,8 @@
 angular.module('quizzimodo.quiz', [])
 
-.controller('QuizController', function($scope, $location, Quiz, $rootScope) {	 
+.controller('QuizController', function($scope, $location, Quiz, State) {	 
 
-  $scope.topics = $rootScope.topics;
+  $scope.topics = State.topics;
   
   $scope.$watch('topicPick', function(x){
     $scope.userTopic = $scope.topics[x]['topic'];
@@ -77,7 +77,7 @@ angular.module('quizzimodo.quiz', [])
   }
 
   $scope.submitQuiz = function() {
-      $scope.quiz.created_by = $rootScope.user.id;
+      $scope.quiz.created_by = State.user.id;
       $scope.quiz.subtopic_id = $scope.userSubtopic.id;
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;

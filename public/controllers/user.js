@@ -1,22 +1,26 @@
 angular.module('quizzimodo.user', [])
 
-.controller('UserController', function($scope, $rootScope, User) {
-  $scope.profileUser = $rootScope.user.username;
-  $scope.profilePic = $rootScope.user.profilePic;
-  $scope.profileEmail = $rootScope.user.email;
-  $scope.profileBio = $rootScope.user.bio;
-  $scope.profileQuizzesMade = $rootScope.user.quizzes;
-  $scope.profileQuizzesTaken = $rootScope.user.attempts;
+.controller('UserController', function($scope, State, User) {
+  console.log('State is : ',State);
+  $scope.$watch('State.user',function(){
+    console.log('State.user has changed');
+  })
+  $scope.profileUser = State.user.username;
+  $scope.profileName = State.user.name;
+  $scope.profilePic = State.user.profilePic;
+  $scope.profileEmail = State.user.email;
+  $scope.profileBio = State.user.bio;
+  $scope.profileQuizzesMade = State.user.quizzes;
+  $scope.profileQuizzesTaken = State.user.attempts;
   // Following scope properties to be used for editing user info
   $scope.edit = false;
-  $scope.name = $rootScope.user.name;
-  $scope.email = $rootScope.user.email;
+  $scope.name = $scope.profileName;
+  $scope.email = $scope.profileEmail;
   $scope.status = "public";
-  $scope.bio = $rootScope.user.bio;
+  $scope.bio = $scope.profileBio;
 
   $(function(){
     $('#profiletabs ul li a').on('click', function(e){
-      console.log('rootScope.user is : ',$rootScope.user);
       e.preventDefault();
       var newcontent = $(this).attr('href');
       
@@ -30,10 +34,8 @@ angular.module('quizzimodo.user', [])
     });
 
     $('.settingTitle span .md-icon-button').on('click', function(e){
-      console.log('md-button clicked!');
       e.preventDefault();
       var newcontent = $(this).attr('href');
-      console.log('scope.edit is : ',$scope.edit);
       if(!$scope.edit){
         $('#settings section').each(function(){
           if(!$(this).hasClass('hidden')) { $(this).addClass('hidden'); }
@@ -49,15 +51,18 @@ angular.module('quizzimodo.user', [])
   });
 
   $scope.updateInfo = function(){
-    if($rootScope.user){
-      var user = { id: $rootScope.user.id, name: $scope.name, email: $scope.email, bio: $scope.bio };
-      User.updateUser(user).then(function(data){
+    if(State.user){
+      var user = { id: State.user.id, name: $scope.name, email: $scope.email, bio: $scope.bio };
+      User.updateUser(user)
+      .then(function(data){
+        console.log('User.updateUser returned data : ',data);
         if(!data.error){
-          $scope.profileName = $scope.name;
-          $scope.profileEmail = $scope.email;
-          $scope.profileBio = $scope.bio;
           $('section#editInfo').addClass('hidden');
           $('section#currentInfo').removeClass('hidden');
+          $scope.profileName = State.user.name;
+          $scope.profilePic = State.user.profilePic;
+          $scope.profileEmail = State.user.email;
+          $scope.profileBio = State.user.bio;
           $scope.edit = false;
         }
       })    
