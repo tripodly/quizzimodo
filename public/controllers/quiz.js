@@ -81,8 +81,9 @@ angular.module('quizzimodo.quiz', [])
       $scope.quiz.subtopic_id = $scope.userSubtopic.id;
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;
-      $scope.quiz.passing = $scope.quizPassing;
+      $scope.quiz.passing = parseFloat($scope.quizPassing);
       $scope.quiz.public = false;
+      console.log('$scope.quiz object is : ',$scope.quiz);
       if ($('#publicCheckbox').is(':checked')) {
         $scope.quiz.public = true;
       }
