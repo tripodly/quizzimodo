@@ -1,9 +1,9 @@
 <div id="user">
   <div id="w">
   <div id="content" class="clearfix">
-    <div id="userphoto" >
-      <img src="assets/avatar.png" alt="default avatar"></div>
-      <h1 class="subtitle">{{profileUser}}'s Profile</h1>
+    <div id="userphoto">
+      <img src={{profilePic}} alt="default avatar" class="profilePic"></div>
+      <h1 class="subtitle">{{profileName}}'s Profile</h1>
 
     <nav id="profiletabs">
       <ul class="clearfix">
@@ -26,11 +26,49 @@
     </section>
 
     <section id="settings" class="hidden">
-      <p>Your user settings:</p>
-      <p class="setting"><span>E-mail Address</span> {{profileEmail}} </p>
-      <p class="setting"><span>Bio</span> {{profileBio}}</p>
-      <p class="setting"><span>Profile Status</span> Public</p>
+      <div class="settingTitle">
+        <span class="settingTitleLeft"><p>Your user settings:</p></span>
+        <span class="settingTitleRight"><md-button type="button" href="#editInfo" class="md-icon-button md-accent"><md-icon>mode_edit</md-icon></md-button></span>
+      </div>
+      <br>
+      <section id="currentInfo">
+        <p class="setting"><span>E-mail Address</span> {{profileEmail}} </p>
+        <p class="setting"><span>Profile Status</span> Public</p>
+        <p class="setting"><span>Bio</span> {{profileBio}}</p>
+      </section>
 
+      <section id="editInfo" class="hidden">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Name:</label>
+          <input type="text" ng-model="name">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Email:</label>
+          <input type="text" ng-model="email">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Status</label>
+          <md-select ng-model="status">
+            <md-option value="public">
+              Public
+            </md-option>
+            <md-option value="private">
+              Private
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Profile Picture:</label>
+          <input type="text" ng-model="pic">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Bio:</label>
+          <textarea ng-model="bio" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+        </md-input-container>
+        <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <md-button ng-click="updateInfo()" class="md-raised md-primary" type="button">Update Info</md-button>
+        </div>
+      </section>
 
     </section>
   </div>

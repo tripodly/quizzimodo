@@ -312,10 +312,16 @@ a {
 #user #userphoto img {
   display: block;
   padding: 2px;
+  height: 140px;
+  width: 140px;
   background: #fff;
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4);
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.4);
   box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+#user #userphoto .profilePic {
+  height: 140px;
+  width: 140px;
 }
 #profiletabs {
   display: block;
@@ -368,6 +374,18 @@ a {
 #user .setting span img {
   cursor: pointer;
 }
+#user .settingTitle {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#user span.settingTitleLeft {
+  display: inline-block;
+  float: left;
+}
+#user span.settingTitleRight {
+  display: inline-block;
+  float: right;
+}
 #container {
    min-height:100%;
    position:relative;
@@ -400,6 +418,17 @@ input {
   z-index: 10;
   opacity: 1;
   color: white;
+}
+
+#title-form md-input-container {
+  margin: 0;
+  border: 2;
+  padding: 1;
+  z-index: 10;
+  width: 297px;
+  font-weight: bolder;
+  color: black;
+  background-color: white;
 }
 
 #all-questions #greenify {

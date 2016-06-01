@@ -4,6 +4,7 @@ module.exports = {
     username: {type: 'string', nullable: false, maxlength: 20},
     password: {type: 'string', nullable: false, maxlength: 20},
     name: {type: 'string', nullable: false, maxlength: 50},
+    profilePic: {type: 'string', nullable: false, defaultTo: 'http://oregoncapitalprsa.org/wp-content/uploads/2011/04/default-profile4.jpg', maxlength:500 },
     email: {type: 'string', nullable: false, maxlength: 50},
     bio: {type: 'text', nullable: true},
     active: {type: 'boolean', nullable: false, defaultTo: true}
@@ -22,6 +23,7 @@ module.exports = {
     subtopic_id: {type: 'integer', nullable: false, references: 'subtopic.id'},
     quiz: {type: 'string', nullable: false},
     details: {type: 'text', nullable: true},
+    passing: {type: 'float', nullable: false, defaultTo: 75.00},
     public: {type: 'boolean', nullable: false, defaultTo: false},
     start: {type: 'dateTime', nullable: true},
     end: {type: 'dateTime', nullable: true},
@@ -31,6 +33,7 @@ module.exports = {
   question: {
     id: {type: 'increments', nullable: false, primary: true},
     quiz_id: {type: 'integer', nullable: false, references: 'quiz.id'},
+    image: {type: 'string', nullable: true},
     question: {type: 'text', nullable: false}
   },
   answer_option: {
