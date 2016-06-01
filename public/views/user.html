@@ -14,11 +14,9 @@
     </nav>
 
     <section id="quizzesTaken">
-    <md-list ng-repeat="quiz in profileQuizzesTaken">
-    <md-list-item >Quiz Name: {{quiz.quiz.quiz}} Score: {{quiz.result}}</md-list-item>
-    </md-list>
-       
-    
+      <md-list ng-repeat="quiz in profileQuizzesTaken">
+        <md-list-item >Quiz Name: {{quiz.quiz.quiz}} Score: {{quiz.result}}</md-list-item>
+      </md-list>
     </section>
 
     <section id="quizzesMade" class="hidden">
