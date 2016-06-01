@@ -1,7 +1,7 @@
 <div id="user">
   <div id="w">
   <div id="content" class="clearfix">
-    <div id="userphoto" >
+    <div id="userphoto">
       <img src={{profilePic}} alt="default avatar" class="profilePic"></div>
       <h1 class="subtitle">{{profileName}}'s Profile</h1>
 
@@ -56,6 +56,10 @@
               Private
             </md-option>
           </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Profile Picture:</label>
+          <input type="text" ng-model="pic">
         </md-input-container>
         <md-input-container class="md-block">
           <label>Bio:</label>

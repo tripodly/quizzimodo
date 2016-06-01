@@ -16,6 +16,7 @@ angular.module('quizzimodo.user', [])
   $scope.edit = false;
   $scope.name = $scope.profileName;
   $scope.email = $scope.profileEmail;
+  $scope.pic = $scope.profilePic;
   $scope.status = "public";
   $scope.bio = $scope.profileBio;
 
@@ -52,7 +53,7 @@ angular.module('quizzimodo.user', [])
 
   $scope.updateInfo = function(){
     if(State.user){
-      var user = { id: State.user.id, name: $scope.name, email: $scope.email, bio: $scope.bio };
+      var user = { id: State.user.id, name: $scope.name, email: $scope.email, bio: $scope.bio, profilePic: $scope.pic };
       User.updateUser(user)
       .then(function(data){
         console.log('User.updateUser returned data : ',data);
