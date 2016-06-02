@@ -76,7 +76,7 @@ module.exports = {
   , 
   getQuizzes: (req, res, next) =>
     Quiz.forge()
-    .where({public: false})
+    .query('where', 'public', '=', '0')
     .fetch()
     .then((quizzes) => res.json({error: false, data: quizzes}))
     .catch((err) => next(err))
