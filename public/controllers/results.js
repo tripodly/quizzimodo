@@ -9,6 +9,8 @@ angular.module('quizzimodo.results', [])
       console.log('The retrieved data', data);
       $scope.quizName = data.data.quiz;
       $scope.quizResult = data.data.attempts[0].result;
+// RATING LOGIC HERE
+      // $scope.quizRating = data.
     }).catch(function(err){
       $scope.loadError = 'Error loading results';
       console.log(err);

@@ -2,7 +2,7 @@
   <span class="error">{{ loadError }}</span>
   <h1>Your results for {{ quizName }}</h1>
   <h1>You scored {{ quizResult }}</h1>
-  <h2> Please rate the quiz: </h2>
   <button class="results-btns" ng-click="retake()">Retake Quiz</button>
   <button class="results-btns"><a ui-sref="selectQuiz">Back to Quizzes</a></button>
+  <h2> Please rate this quiz: {{ quizRating }}</h2>
 </div>
