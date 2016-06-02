@@ -85,6 +85,7 @@ angular.module('quizzimodo.quiz', [])
     if(!$scope.quiz.private){
       $scope.className = '';
       $scope.password = '';
+      $scope.quiz.private = false;
     }
       $scope.quiz.created_by = State.user.id;
       $scope.quiz.subtopic_id = $scope.userSubtopic.id;
