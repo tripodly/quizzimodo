@@ -75,23 +75,23 @@ angular.module('quizzimodo.quiz', [])
     clearFields();
     $scope.currentlyEditing = false;
   }
-  $scope.updateModal = function(){
+  $scope.updateModal = function() {
     console.log('clicked in the update modal')
-    $scope.showModal = !$scope.quiz.public;
-    $scope.quiz.public = !$scope.quiz.public;
+    $scope.showModal = !$scope.quiz.private;
+    $scope.quiz.private = !$scope.quiz.private;
   }
 
   $scope.submitQuiz = function() {
+    if(!$scope.quiz.private){
+      $scope.className = '';
+      $scope.password = '';
+    }
       $scope.quiz.created_by = State.user.id;
       $scope.quiz.subtopic_id = $scope.userSubtopic.id;
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;
       $scope.quiz.passing = parseFloat($scope.quizPassing);
-      $scope.quiz.public = false;
-      console.log('$scope.quiz object is : ',$scope.quiz);
-      if ($('#publicCheckbox').is(':checked')) {
-        $scope.quiz.public = true;
-      }
+      $scope.group = {className:$scope.className, password:$scope.password}
 
       Quiz.postQuiz($scope.quiz)
       .then(function() {
