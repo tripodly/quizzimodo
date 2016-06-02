@@ -30,7 +30,8 @@ module.exports = {
     password: {type: 'string', nullable: true},
     className:{type: 'string', nullable: true},
     created_by: {type: 'integer', nullable: false, references: 'user.id'},
-    active: {type: 'boolean', nullable: false, defaultTo: true}
+    active: {type: 'boolean', nullable: false, defaultTo: true},
+    rating: {type: 'integer', nullable: false, defaultTo: 0}
   },
   question: {
     id: {type: 'increments', nullable: false, primary: true},

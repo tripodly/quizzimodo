@@ -109,6 +109,7 @@ module.exports = {
     var pass_count = 0, 
       fail_count = 0, 
       result = 0.0,
+      rating = 0,
       quiz = req.body;
 
     quiz.questions.forEach((question) => {
