@@ -13,10 +13,12 @@ module.exports = {
       quiz: newQuiz.quiz,
       details: newQuiz.details,
       passing: newQuiz.passing,
-      public: newQuiz.public,
+      private: newQuiz.private,
       start: newQuiz.start,
       end: newQuiz.end,
       created_by: newQuiz.created_by,
+      password: newQuiz.group.password,
+      className : newQuiz.group.className,
       active: true
     })
     .then((quizID) => {
