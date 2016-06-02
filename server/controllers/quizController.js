@@ -8,15 +8,18 @@ var Questions = require('../collections/questions.js');
 module.exports = {
   createQuiz: (req, res, next) => {
     var newQuiz = req.body;
+    console.log('this is the group in create quiz',newQuiz.group)
     bookshelf.knex('quiz').insert({
       subtopic_id: newQuiz.subtopic_id,
       quiz: newQuiz.quiz,
       details: newQuiz.details,
       passing: newQuiz.passing,
-      public: newQuiz.public,
+      public: newQuiz.private,
       start: newQuiz.start,
       end: newQuiz.end,
       created_by: newQuiz.created_by,
+      password: newQuiz.group.password,
+      className : newQuiz.group.className,
       active: true
     })
     .then((quizID) => {
@@ -72,7 +75,8 @@ module.exports = {
     .catch((err) => next(err))
   , 
   getQuizzes: (req, res, next) =>
-    Quizzes.forge()
+    Quiz.forge()
+    .query('where', 'public', '=', '0')
     .fetch()
     .then((quizzes) => res.json({error: false, data: quizzes}))
     .catch((err) => next(err))

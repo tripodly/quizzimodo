@@ -27,6 +27,8 @@ module.exports = {
     public: {type: 'boolean', nullable: false, defaultTo: false},
     start: {type: 'dateTime', nullable: true},
     end: {type: 'dateTime', nullable: true},
+    password: {type: 'string', nullable: true},
+    className:{type: 'string', nullable: true},
     created_by: {type: 'integer', nullable: false, references: 'user.id'},
     active: {type: 'boolean', nullable: false, defaultTo: true}
   },
