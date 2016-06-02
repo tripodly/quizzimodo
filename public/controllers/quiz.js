@@ -91,7 +91,7 @@ angular.module('quizzimodo.quiz', [])
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;
       $scope.quiz.passing = parseFloat($scope.quizPassing);
-      $scope.group = {className:$scope.className, password:$scope.password}
+      $scope.quiz.group = {className:$scope.className, password:$scope.password}
 
       Quiz.postQuiz($scope.quiz)
       .then(function() {

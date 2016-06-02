@@ -24,7 +24,7 @@ module.exports = {
     quiz: {type: 'string', nullable: false},
     details: {type: 'text', nullable: true},
     passing: {type: 'float', nullable: false, defaultTo: 75.00},
-    private: {type: 'boolean', nullable: false, defaultTo: false},
+    public: {type: 'boolean', nullable: false, defaultTo: false},
     start: {type: 'dateTime', nullable: true},
     end: {type: 'dateTime', nullable: true},
     password: {type: 'string', nullable: true},

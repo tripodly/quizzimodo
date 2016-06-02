@@ -82,17 +82,18 @@
             <form role="form">
               <div class="form-group">
                 <label for="className">Class Name</label>
-                <input type="className" class="form-control" id="className" placeholder="Enter Class Name" />
+                <input type="className" class="form-control" id="className" placeholder="Enter Class Name" ng-model="className"/>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" />
+                <input type="password" class="form-control" id="password" placeholder="Password"
+                ng-model="password"
+                 />
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
             </form>
           </modal>
           <div>
-            Make quiz Private? <input id="publicCheckbox" name="publicCheckbox" value="true" type="checkbox" ng-click="updateModal()">
+            Make quiz Private? <input id="privateCheckbox" name="privateCheckbox" value="true" type="checkbox" ng-click="updateModal()">
           </div>
       </form>
     </div></div>
