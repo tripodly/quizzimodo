@@ -19,6 +19,15 @@
         </md-select>
       </md-input-container>
 
+      <input id="classname">
+        <label>Select Topic</label>
+        <md-select ng-model="subtopicPick">
+          <md-option ng-repeat="subtopic in subTopics" value="{{$index}}">
+            {{subtopic.subtopic}}
+          </md-option>
+        </md-select>
+      </input>
+
 	<md-content id="quiz-selector" class="md-padding" layout-xs="column" layout="row">
 	   <div flex-xs="" flex-gt-xs="90" layout="column">
 
