@@ -75,10 +75,17 @@ module.exports = {
     .catch((err) => next(err))
   , 
   getQuizzes: (req, res, next) =>
-    Quiz.forge()
-    .query('where', 'public', '=', '0')
+    Quizzes.forge()
     .fetch()
-    .then((quizzes) => res.json({error: false, data: quizzes}))
+    .then((quizzes) => {
+      console.log('this is the getquiz response',req.body);
+      var collection = quizzes.filter(function(quiz){
+        console.log(quiz.attributes.public)
+        return quiz.attributes.public;
+      });
+      console.log('this is the collection in quizcontroller',collection)
+      res.json({error: false, data: collection});
+    })
     .catch((err) => next(err))
   ,
   updateQuiz: (req, res, next) =>
