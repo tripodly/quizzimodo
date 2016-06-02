@@ -16,10 +16,17 @@ a {
     src: url(assets/Sketchy.ttf);
 }
 
-
+.md-toolbar-tools:hover {
+  color: white;
+}
 
 #nav md-toolbar  {
+  background-color: transparent;
+  color: transparent;
+}
+#nav md-toolbar:hover {
   background-color: #4CAF50;
+  color: white ;
 }
 
 #landing {
