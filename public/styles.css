@@ -448,3 +448,8 @@ input {
 .clearfix { display: inline-block; }
 
 */
+.rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
