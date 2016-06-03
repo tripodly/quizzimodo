@@ -74,23 +74,26 @@ module.exports = {
     })
     .catch((err) => next(err))
   , 
-  getQuizzes: (req, res, next) =>
+  getQuizzes: (req, res, next) => {
+    console.log('getQuizzes req is : ',req);
     Quizzes.forge()
     .fetch()
     .then((quizzes) => {
       var collection = _.filter(quizzes.models,function(quiz){
+        console.log('inside filter function of .then, quiz is : ',quiz);
         //private is really public
         if(!quiz.attributes.public){
           return true;
-      } else if(req.query.className && quiz.attributes.password === req.query.className && quiz.attributes.password === req.query.password){
+        } else if(req.query.className && quiz.attributes.className === req.query.className && quiz.attributes.password === req.query.password){
           return true;
-        }else{
+        } else {
           return false;
         }
       });
       res.json({error: false, data: collection});
     })
     .catch((err) => next(err))
+  }
   ,
   updateQuiz: (req, res, next) =>
     Quiz.forge({quiz_id: req.params.quiz_id})

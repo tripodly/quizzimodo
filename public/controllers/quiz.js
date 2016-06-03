@@ -3,6 +3,7 @@ angular.module('quizzimodo.quiz', [])
 .controller('QuizController', function($scope, $location, Quiz, State) {	 
 
   $scope.topics = State.topics;
+  $scope.quizzes = State.user.quizzes;
   
   $scope.$watch('topicPick', function(x){
     $scope.userTopic = $scope.topics[x]['topic'];
@@ -96,6 +97,8 @@ angular.module('quizzimodo.quiz', [])
 
     Quiz.postQuiz($scope.quiz)
       .then(function() {
+        // on successful quiz post, push the quiz to the state obj
+        State.user.quizzes.push($scope.quiz);
         alert('Quiz created!');
         $location.path('/main');
       })
