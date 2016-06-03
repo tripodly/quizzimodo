@@ -6,6 +6,7 @@ angular.module('quizzimodo', [
   'quizzimodo.take',
   'quizzimodo.user',
   'quizzimodo.results',
+  'oitozero.ngSweetAlert',
   'ngMaterial',
   'ngMessages',
   'ui.router'

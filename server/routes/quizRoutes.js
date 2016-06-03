@@ -7,6 +7,8 @@ module.exports = function (app) {
     .get(quizController.getQuizzes)
     .post(quizController.createQuiz);
   app.post('/submit', quizController.createAttempt);
+  app.route('/attempts/:quiz_id')
+  	.get(quizController.getQuizAttempts);
   app.route('/:quiz_id')
     .get(quizController.getQuiz)
     .put(quizController.updateQuiz)

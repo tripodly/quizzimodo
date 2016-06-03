@@ -1,6 +1,7 @@
 var User = require('../models/user.js');
 var Users = require('../collections/users.js');
 var Topics = require('../collections/topics.js');
+var bookshelf = require('../db/db_config/db_config.js');
 var jwt = require('jwt-simple');
 
 module.exports = {
@@ -75,7 +76,7 @@ module.exports = {
     .then((user) => {
       if (!user)
         next(new Error('User does not exist'));
-      else
+      else {
         user.comparePasswords(req.body.password)
         .then((isMatch) => {
           if (isMatch) {
@@ -86,6 +87,7 @@ module.exports = {
             .fetch({withRelated: ['subtopics']})
             .then((topics) => {
               response.data.topics = topics;
+
               res.json(response);
             })
             .catch((err) => next(err));
@@ -93,6 +95,7 @@ module.exports = {
             next(new Error('Invalid password'));
         })
         .catch((err) => next(err));
+      }
     })
     .catch((err) => next(err))  
   }
