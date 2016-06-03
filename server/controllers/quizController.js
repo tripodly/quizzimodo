@@ -4,6 +4,7 @@ var Question = require('../models/question.js');
 var AnswerOption = require('../models/answer_option.js');
 var Quizzes = require('../collections/quizzes.js');
 var Questions = require('../collections/questions.js');
+var _ = require('lodash');
 
 module.exports = {
   createQuiz: (req, res, next) => {
@@ -69,7 +70,6 @@ module.exports = {
     Quiz.forge({id: req.params.quiz_id})
     .fetch({require: true, withRelated: ['questions.answer_options', 'attempts.user_answers']})
     .then((quiz) => {
-      // console.log("quiz.related('questions'): ", quiz.related('questions'));
       res.json({error: false, data: quiz})
     })
     .catch((err) => next(err))
@@ -78,12 +78,17 @@ module.exports = {
     Quizzes.forge()
     .fetch()
     .then((quizzes) => {
-      console.log('this is the getquiz response',req.body);
-      var collection = quizzes.filter(function(quiz){
-        console.log(quiz.attributes.public)
-        return quiz.attributes.public;
+      var collection = _.filter(quizzes.models,function(quiz){
+        if(!quiz.attributes.public){
+          return true;
+      } else if(quiz.attributes.password === req.query.className && quiz.attributes.password === req.query.password){
+          return true;
+        }else{
+          console.log('this quiz didn pass',quiz);
+          return false;
+        }
       });
-      console.log('this is the collection in quizcontroller',collection)
+      console.log('this is the end of the filter', collection)
       res.json({error: false, data: collection});
     })
     .catch((err) => next(err))

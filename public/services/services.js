@@ -89,10 +89,11 @@ angular.module('quizzimodo.services', [])
     return persistedData;
   }
 
-  var getQuizzes = function() {
+  var getQuizzes = function(data) {
     return $http({
       method: 'GET',
-      url: '/api/quizzes'
+      url: '/api/quizzes',
+      params: data
     })
     .then(function(resp) {
       return resp.data
