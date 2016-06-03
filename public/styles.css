@@ -459,7 +459,6 @@ ul.rating {
 }
 
 .rating li {
-  list-style-type: none;
   display: inline-block;
   padding: 1px;
   text-align: center;
@@ -469,4 +468,7 @@ ul.rating {
 
 .rating .filled {
   color: #21568b;
+}
+li.ng-scope {
+  font-size: 2em;
 }

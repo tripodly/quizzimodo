@@ -5,8 +5,8 @@
   <button class="results-btns" ng-click="retake()">Retake Quiz</button>
   <button class="results-btns"><a ui-sref="selectQuiz">Back to Quizzes</a></button>
   <div ng-init="rating = star.rating + 1"></div>
-
+  <h3>Please Rate The Below!</h3>
 <div class="star-rating" star-rating rating-value="rating"
 
- data-max="10" on-rating-selected="rateFunction(rating)"></div>
+ data-max="5" on-rating-selected="rateFunction(rating)"></div>
 </div>
