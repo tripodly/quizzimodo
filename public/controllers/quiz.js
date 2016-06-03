@@ -76,7 +76,7 @@ angular.module('quizzimodo.quiz', [])
     $scope.currentlyEditing = false;
   }
   $scope.updateModal = function() {
-    console.log('clicked in the update modal')
+    console.log('clicked in the update modal', $scope.quiz.private);
     $scope.showModal = !$scope.quiz.private;
     $scope.quiz.private = !$scope.quiz.private;
   }
@@ -86,7 +86,7 @@ angular.module('quizzimodo.quiz', [])
       $scope.className = '';
       $scope.password = '';
       $scope.quiz.private = false;
-    }
+    };
       $scope.quiz.created_by = State.user.id;
       $scope.quiz.subtopic_id = $scope.userSubtopic.id;
       $scope.quiz.quiz = $scope.quizName;
