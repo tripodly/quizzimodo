@@ -4,10 +4,9 @@
   <h1>You scored {{ quizResult }}</h1>
   <button class="results-btns" ng-click="retake()">Retake Quiz</button>
   <button class="results-btns"><a ui-sref="selectQuiz">Back to Quizzes</a></button>
-  <h2> Please rate this quiz: {{ quizRating }}</h2>
-</div>
+  <div ng-init="rating = star.rating + 1"></div>
 
-  Rating is {{rating}} <br/>
-  Clickable Rating <br/>
-  <div fundoo-rating rating-value="rating" max="10" on-rating-selected="saveRatingToServer(rating)"></div>
-  <br/>
+<div class="star-rating" star-rating rating-value="rating"
+
+ data-max="10" on-rating-selected="rateFunction(rating)"></div>
+</div>
