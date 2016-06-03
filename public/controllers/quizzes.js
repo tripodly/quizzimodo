@@ -36,11 +36,13 @@ angular.module('quizzimodo.quizzes', [])
     });
   };
   $scope.startUp();
-
-
   $scope.takeQuiz = function(quizID){
     Quiz.setData(quizID);
     $location.path('/take_quiz');
+  };
+  $scope.upDateModal = function(){
+      console.log('here');
+    $scope.showModal = !$scope.showModal;
   };
   $scope.getPrivateQuiz = function(){
     console.log('this is the class', $scope.className);

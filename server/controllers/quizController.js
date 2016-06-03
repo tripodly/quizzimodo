@@ -79,16 +79,15 @@ module.exports = {
     .fetch()
     .then((quizzes) => {
       var collection = _.filter(quizzes.models,function(quiz){
+        //private is really public
         if(!quiz.attributes.public){
           return true;
-      } else if(quiz.attributes.password === req.query.className && quiz.attributes.password === req.query.password){
+      } else if(req.query.className && quiz.attributes.password === req.query.className && quiz.attributes.password === req.query.password){
           return true;
         }else{
-          console.log('this quiz didn pass',quiz);
           return false;
         }
       });
-      console.log('this is the end of the filter', collection)
       res.json({error: false, data: collection});
     })
     .catch((err) => next(err))
