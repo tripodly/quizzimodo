@@ -87,14 +87,14 @@ angular.module('quizzimodo.quiz', [])
       $scope.password = '';
       $scope.quiz.private = false;
     };
-      $scope.quiz.created_by = State.user.id;
-      $scope.quiz.subtopic_id = $scope.userSubtopic.id;
-      $scope.quiz.quiz = $scope.quizName;
-      $scope.quiz.details = $scope.quizDetails;
-      $scope.quiz.passing = parseFloat($scope.quizPassing);
-      $scope.quiz.group = {className:$scope.className, password:$scope.password}
+    $scope.quiz.created_by = State.user.id;
+    $scope.quiz.subtopic_id = $scope.userSubtopic.id;
+    $scope.quiz.quiz = $scope.quizName;
+    $scope.quiz.details = $scope.quizDetails;
+    $scope.quiz.passing = parseFloat($scope.quizPassing);
+    $scope.quiz.group = {className:$scope.className, password:$scope.password}
 
-      Quiz.postQuiz($scope.quiz)
+    Quiz.postQuiz($scope.quiz)
       .then(function() {
         alert('Quiz created!');
         $location.path('/main');
