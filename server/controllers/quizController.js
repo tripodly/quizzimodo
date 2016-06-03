@@ -9,7 +9,7 @@ var _ = require('lodash');
 module.exports = {
   createQuiz: (req, res, next) => {
     var newQuiz = req.body;
-    // console.log('this is the group in create quiz',newQuiz.group)
+    console.log('this is the group in create quiz',newQuiz.group)
     bookshelf.knex('quiz').insert({
       subtopic_id: newQuiz.subtopic_id,
       quiz: newQuiz.quiz,
@@ -84,7 +84,7 @@ module.exports = {
         //private is really public
         if(!quiz.attributes.public){
           return true;
-        } else if(req.query.className && quiz.attributes.className === req.query.className && quiz.attributes.password === req.query.password){
+      } else if(req.query.className && quiz.attributes.className === req.query.className && quiz.attributes.password === req.query.password){
           return true;
         } else {
           return false;

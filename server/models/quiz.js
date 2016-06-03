@@ -5,6 +5,7 @@ require('./question.js');
 require('./attempt.js');
 require('./invitee.js');
 
+
 var Quiz = bookshelf.Model.extend({
   tableName: 'quiz',
   hasTimestamps: true,
