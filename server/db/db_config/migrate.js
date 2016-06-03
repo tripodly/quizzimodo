@@ -5,7 +5,7 @@ var knex = require('knex')({
   client: 'sqlite3',
   connection: {
     charset: 'utf8',
-    filename: './server/db/quizzimodo.db'
+    filename: '../quizzimodo.db'
   },
   useNullAsDefault: true
 });
