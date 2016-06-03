@@ -356,6 +356,10 @@ a {
   background: #fff;
   border-color: #d1cdb5;
 }
+#user #quizzesTaken,#quizzesMade ul {
+  list-style-type: none;
+  margin-left: -8px;
+}
 #user .hidden {
   display: none;
 }

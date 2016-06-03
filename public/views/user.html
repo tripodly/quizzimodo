@@ -14,14 +14,30 @@
     </nav>
 
     <section id="quizzesTaken">
-      <ul>
-        <li ng-repeat="quiz in profileQuizzesTaken">{{quiz}}</li>
-      </ul>
+      <md-list ng-repeat="quiz in profileQuizzesTaken">
+        <md-list-item >Quiz Name: {{quiz.quiz.quiz}} Score: {{quiz.result}}</md-list-item>
+      </md-list>
     </section>
 
     <section id="quizzesMade" class="hidden">
       <ul>
-        <li ng-repeat="quiz in profileQuizzesMade">{{quiz}}</li>
+        <li ng-repeat="quiz in profileQuizzesMade">
+          <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{quiz.quiz}}</span>
+                <span class="md-subhead">{{quiz.details}}</span>
+                <span class="md-subhead">{{quiz.created_at}}</span>
+              </md-card-title-text>
+              <md-card-title-media>
+                <div class="md-media-md card-media"></div>
+              </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button ng-click="showAlert()">Results</md-button>
+            </md-card-actions>
+          </md-card>
+        </li>
       </ul>
     </section>
 

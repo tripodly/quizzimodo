@@ -1,8 +1,9 @@
 angular.module('quizzimodo.quiz', [])
 
-.controller('QuizController', function($scope, $location, Quiz, State) {	 
+.controller('QuizController', function($scope, $location, Quiz, State, SweetAlert) {	 
 
   $scope.topics = State.topics;
+  $scope.quizzes = State.user.quizzes;
   
   $scope.$watch('topicPick', function(x){
     $scope.userTopic = $scope.topics[x]['topic'];
@@ -75,26 +76,40 @@ angular.module('quizzimodo.quiz', [])
     clearFields();
     $scope.currentlyEditing = false;
   }
+  $scope.updateModal = function() {
+    console.log('clicked in the update modal', $scope.quiz.private);
+    $scope.showModal = !$scope.quiz.private;
+    $scope.quiz.private = !$scope.quiz.private;
+  }
 
   $scope.submitQuiz = function() {
+    console.log('$scope.quiz object is : ',$scope.quiz);
+    if($scope.quiz.questions.length > 0){
+      if(!$scope.quiz.private){
+        $scope.className = '';
+        $scope.password = '';
+        $scope.quiz.private = false;
+      };
       $scope.quiz.created_by = State.user.id;
       $scope.quiz.subtopic_id = $scope.userSubtopic.id;
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;
       $scope.quiz.passing = parseFloat($scope.quizPassing);
-      $scope.quiz.public = false;
-      console.log('$scope.quiz object is : ',$scope.quiz);
-      if ($('#publicCheckbox').is(':checked')) {
-        $scope.quiz.public = true;
-      }
-
+      $scope.quiz.group = {className:$scope.className, password:$scope.password}
       Quiz.postQuiz($scope.quiz)
-      .then(function() {
-        alert('Quiz created!');
-        $location.path('/main');
-      })
-      .catch(function(error) {
-        console.error(error);
-      });
+        .then(function() {
+          // on successful quiz post, push the quiz to the state obj
+          State.user.quizzes.push($scope.quiz);
+          SweetAlert.swal({title: 'Quiz created!', type: 'success'});
+          $location.path('/main');
+        })
+        .catch(function(error) {
+          SweetAlert.swal({title: 'Quiz creation failed!', type: 'error'});
+          console.error(error);
+        });
+    } else {
+      SweetAlert.swal({title: 'Please enter at least one question!', type: 'error'});
+    }
+    
   }
 });

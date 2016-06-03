@@ -36,12 +36,29 @@ angular.module('quizzimodo.quizzes', [])
     });
   };
   $scope.startUp();
-
-
   $scope.takeQuiz = function(quizID){
     Quiz.setData(quizID);
     $location.path('/take_quiz');
   };
-  
+  $scope.upDateModal = function(){
+      console.log('here');
+    $scope.showModal = !$scope.showModal;
+  };
+  $scope.getPrivateQuiz = function(){
+    console.log('this is the class', $scope.className);
+    console.log('this is the class', $scope.password);
+    Quiz.getQuizzes({className: $scope.className, password:$scope.password})    
+    .then(function(data){
+      $scope.quizzes = data.data;
+      $scope.temp = data.data;
+      $scope.image = '../assets/avatar.png';
+      $scope.topics = State.topics;
+      if(data.data.result){
+        $scope.taken = 'Retake';
+      } else {
+        $scope.taken = 'Take Quiz'
+      }
+    })
+  };
 
 });

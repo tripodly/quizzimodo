@@ -8,6 +8,7 @@ angular.module('quizzimodo.services', [])
       data: user
     })
     .then(function(resp) {
+      console.log('inside Auth service, resp.data is : ',resp.data);
       State.topics = resp.data.data.topics;
       State.user = resp.data.data.user;
       return resp.data;
@@ -88,10 +89,11 @@ angular.module('quizzimodo.services', [])
     return persistedData;
   }
 
-  var getQuizzes = function() {
+  var getQuizzes = function(data) {
     return $http({
       method: 'GET',
-      url: '/api/quizzes'
+      url: '/api/quizzes',
+      params: data
     })
     .then(function(resp) {
       return resp.data
@@ -129,6 +131,17 @@ angular.module('quizzimodo.services', [])
       return resp.data
     });
   };
+
+  var getQuizAttempts = function(quizID) {
+    return $http({
+      method: 'GET',
+      url: '/api/quizzes/attempts/' + quizID,
+      data: { quizID: quizID }
+    })
+    .then(function(resp) {
+      return resp.data
+    });
+  }
 
   return {
     getQuizzes: getQuizzes,
