@@ -20,8 +20,6 @@ angular.module('quizzimodo.user', [])
   $scope.status = "public";
   $scope.bio = $scope.profileBio;
 
-  $scope.SweetAlert = SweetAlert;
-
   $(function(){
     $('#profiletabs ul li a').on('click', function(e){
       e.preventDefault();
@@ -53,11 +51,8 @@ angular.module('quizzimodo.user', [])
     });
   });
 
-  console.log('SweetAlert service is : ',SweetAlert);
-  $scope.SweetAlert.swal("Here's a message");
-
   $scope.showAlert = function(){
-    // SweetAlert.swal("Here's a message");
+    SweetAlert.swal("Here's a message");
     console.log('showAlert called');
   }
 
@@ -70,6 +65,7 @@ angular.module('quizzimodo.user', [])
         if(!data.error){
           $('section#editInfo').addClass('hidden');
           $('section#currentInfo').removeClass('hidden');
+          SweetAlert.swal('Info has been successfully updated!');
           $scope.profileName = State.user.name;
           $scope.profilePic = State.user.profilePic;
           $scope.profileEmail = State.user.email;
