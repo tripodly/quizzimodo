@@ -99,7 +99,11 @@ angular.module('quizzimodo.quiz', [])
       Quiz.postQuiz($scope.quiz)
         .then(function() {
           // on successful quiz post, push the quiz to the state obj
-          State.user.quizzes.push($scope.quiz);
+          if(!State.user.quizzes){
+            State.user.quizzes = [$scope.quiz];
+          } else {
+            State.user.quizzes.push($scope.quiz);            
+          }
           SweetAlert.swal({title: 'Quiz created!', type: 'success'});
           $location.path('/main');
         })
