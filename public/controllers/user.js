@@ -1,6 +1,6 @@
 angular.module('quizzimodo.user', [])
 
-.controller('UserController', function($scope, State, User) {
+.controller('UserController', function($scope, State, User, SweetAlert) {
   console.log('State is : ',State);
   $scope.$watch('State.user',function(){
     console.log('State.user has changed');
@@ -19,6 +19,8 @@ angular.module('quizzimodo.user', [])
   $scope.pic = $scope.profilePic;
   $scope.status = "public";
   $scope.bio = $scope.profileBio;
+
+  $scope.SweetAlert = SweetAlert;
 
   $(function(){
     $('#profiletabs ul li a').on('click', function(e){
@@ -50,6 +52,14 @@ angular.module('quizzimodo.user', [])
       }
     });
   });
+
+  console.log('SweetAlert service is : ',SweetAlert);
+  $scope.SweetAlert.swal("Here's a message");
+
+  $scope.showAlert = function(){
+    // SweetAlert.swal("Here's a message");
+    console.log('showAlert called');
+  }
 
   $scope.updateInfo = function(){
     if(State.user){

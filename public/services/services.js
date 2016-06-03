@@ -132,6 +132,17 @@ angular.module('quizzimodo.services', [])
     });
   };
 
+  var getQuizAttempts = function(quizID) {
+    return $http({
+      method: 'GET',
+      url: '/api/quizzes/attempts/' + quizID,
+      data: { quizID: quizID }
+    })
+    .then(function(resp) {
+      return resp.data
+    });
+  }
+
   return {
     getQuizzes: getQuizzes,
     getQuiz: getQuiz,

@@ -9,7 +9,7 @@ var _ = require('lodash');
 module.exports = {
   createQuiz: (req, res, next) => {
     var newQuiz = req.body;
-    console.log('this is the group in create quiz',newQuiz.group)
+    // console.log('this is the group in create quiz',newQuiz.group)
     bookshelf.knex('quiz').insert({
       subtopic_id: newQuiz.subtopic_id,
       quiz: newQuiz.quiz,
@@ -75,12 +75,12 @@ module.exports = {
     .catch((err) => next(err))
   , 
   getQuizzes: (req, res, next) => {
-    console.log('getQuizzes req is : ',req);
+    // console.log('getQuizzes req is : ',req);
     Quizzes.forge()
     .fetch()
     .then((quizzes) => {
       var collection = _.filter(quizzes.models,function(quiz){
-        console.log('inside filter function of .then, quiz is : ',quiz);
+        // console.log('inside filter function of .then, quiz is : ',quiz);
         //private is really public
         if(!quiz.attributes.public){
           return true;
@@ -146,5 +146,20 @@ module.exports = {
       .catch((err) => next(err));
     })
     .catch((err) => next(err));
+  }
+  ,
+  getQuizAttempts: (req, res, next) => {
+    var quizID = req.body.quizID;
+    // // attach the quiz attempts results to each quiz:
+    // bookshelf.knex('attempt').select('*').then(function(attempts){
+    //   console.log('attempts returned from bookshelf.knex(attempt) : ',attempts);
+    //   attempts.forEach(function(quizAttempt){
+        
+    //   })
+    // })
+    // console.log('user object returned is : ',user);
+    // user.relations.quizzes.forEach(function(quiz){
+    //   console.log('quiz inside user.quizzes.forEach is : ',quiz);
+    // })
   }
 };
